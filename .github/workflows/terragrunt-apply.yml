@@ -5,7 +5,7 @@ on:
     branches: main
     paths:
       - '**.hcl'
-      - 'modules/**
+      - 'modules/**'
 
 env:
   tf_version: '0.13.6'
