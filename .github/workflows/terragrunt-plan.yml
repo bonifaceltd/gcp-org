@@ -1,6 +1,7 @@
 name: Plan Boniface GCP Org
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - '**.hcl'
