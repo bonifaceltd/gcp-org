@@ -3,6 +3,9 @@ name: Apply Boniface GCP Org
 on:
   push:
     branches: main
+    paths:
+      - '**.hcl'
+      - 'modules/**
 
 env:
   tf_version: '0.13.6'
