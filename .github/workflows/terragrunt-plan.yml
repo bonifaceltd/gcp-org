@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - '**.hcl'
-      - 'modules/**
+      - 'modules/**'
 
 env:
   tf_version: '0.13.6'
