@@ -1,7 +1,10 @@
 name: Plan Boniface GCP Org
 
 on:
-  - pull_request
+  pull_request:
+    paths:
+      - '**.hcl'
+      - 'modules/**
 
 env:
   tf_version: '0.13.6'
