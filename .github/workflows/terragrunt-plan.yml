@@ -5,7 +5,7 @@ on:
 
 env:
   tf_version: '0.13.6'
-  tg_version: '0.28.4'
+  tg_version: 'latest'
   tf_working_dir: '.'
 
 jobs:
@@ -15,8 +15,13 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+      - name: 'Auth terrafrom svc account'
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.TF_GCP_SA_KEY }}
+          export_default_credentials: true
       - name: 'Terragrunt Format'
-        uses: the-commons-project/terragrunt-github-actions@1.0.6
+        uses: bonifaceltd/terragrunt-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
@@ -26,27 +31,25 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_GCP_SA_KEY }}
       - name: 'Terragrunt Validate'
-        uses: the-commons-project/terragrunt-github-actions@1.0.6
+        uses: bonifaceltd/terragrunt-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
-          tf_actions_binary: 'terraform'
           tf_actions_subcommand: 'validate'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
+          tf_actions_run_all: true
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_GCP_SA_KEY }}
       - name: 'Terragrunt Plan'
-        uses: the-commons-project/terragrunt-github-actions@1.0.6
+        uses: bonifaceltd/terragrunt-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
           tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
+          tf_actions_run_all: true
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_GCP_SA_KEY }}
