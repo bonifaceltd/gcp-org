@@ -21,7 +21,7 @@ include {
 inputs = {
   parent          = dependency.transport_folder.outputs.id
   org             = "bon"
-  name            = "transport-prd"
+  name            = "transport-stg"
   subnets         = []
   shared_vpc_host = false
 }

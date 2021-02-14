@@ -7,4 +7,6 @@ module "vpc" {
   subnets      = var.subnets
 
   shared_vpc_host = false
+
+  depends_on = [google_project_service.api]
 }
