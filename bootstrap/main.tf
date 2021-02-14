@@ -4,7 +4,7 @@ module "bootstrap" {
 
   org_id               = "1077773425109"
   project_id           = "${local.org}-terraform-007"
-  project_prefix	   = local.org
+  project_prefix       = local.org
   billing_account      = "01C4CA-74671D-650411"
   group_org_admins     = "org-admins@${var.org}"
   group_billing_admins = "billing-admins@${var.org}"
@@ -14,5 +14,5 @@ module "bootstrap" {
 }
 
 locals {
-    org = substr(var.org, 0, 3)
+  org = substr(var.org, 0, 3)
 }
