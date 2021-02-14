@@ -2,7 +2,7 @@ name: Apply Boniface GCP Org
 
 on:
   push:
-    branches: master
+    branches: main
 
 env:
   tf_version: '0.13.6'
