@@ -23,7 +23,7 @@ resource "google_compute_vpn_tunnel" "transport0" {
   name                  = "${var.name}-tun0"
   project               = var.transport["project"]
   vpn_gateway           = var.transport["gw"]
-  peer_gcp_gateway      = google_compute_ha_vpn_gateway.this.id
+  peer_gcp_gateway      = google_compute_ha_vpn_gateway.this.self_link
   shared_secret         = "secret"
   router                = var.transport["cr"]
   vpn_gateway_interface = 0
@@ -33,7 +33,7 @@ resource "google_compute_vpn_tunnel" "transport1" {
   name                  = "${var.name}-tun1"
   project               = var.transport["project"]
   vpn_gateway           = var.transport["gw"]
-  peer_gcp_gateway      = google_compute_ha_vpn_gateway.this.id
+  peer_gcp_gateway      = google_compute_ha_vpn_gateway.this.self_link
   shared_secret         = "secret"
   router                = var.transport["cr"]
   vpn_gateway_interface = 0
