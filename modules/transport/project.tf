@@ -1,6 +1,6 @@
 resource "google_project" "env" {
   name                = "${var.org}-${var.name}"
-  project_id          = "${var.org}-${var.name}-007"
+  project_id          = "${var.org}-${var.name}-07"
   folder_id           = google_folder.env.name
   billing_account     = local.billing_account[local.env]
   auto_create_network = false
