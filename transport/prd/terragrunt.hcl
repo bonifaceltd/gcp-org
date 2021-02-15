@@ -23,6 +23,6 @@ inputs = {
   org        = "bon"
   name       = "transport-prd"
   subnets    = []
-  asn        = 13
+  asn        = 14
   cidr_range = "10.0.8.0/22"
 }

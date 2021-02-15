@@ -1,4 +1,5 @@
-# GCP-Boniface-ORG
+# GCP-Boniface-ORG ![Plan Boniface GCP Org](https://github.com/mrkaleslie/gcp-boniface-org/workflows/Plan%20Boniface%20GCP%20Org/badge.svg) ![Apply Boniface GCP Org](https://github.com/mrkaleslie/gcp-boniface-org/workflows/Apply%20Boniface%20GCP%20Org/badge.svg)
+
 
 ![org-diagram](./Org-Diagram.png)
 
@@ -75,3 +76,35 @@ project = bon-terraform-007-fbf5
 svc_account = org-terraform@bon-terraform-007-fbf5.iam.gserviceaccount.com
 ```
 ---
+
+## IAC
+
+At this point terragrunt takes ownership
+---
+
+- deploy all folders + projects as depicted in diagram, and incorporate dependencies
+
+- deploy all networking components
+
+## CI/CD - Github Actions
+
+`secrets.TF_GCP_SA_KEY` for svc account `org-terraform@bon-terraform-007-fbf5.iam.gserviceaccount.com`
+`secrets.TOKEN` GitHub API token used to post comments to pull requests
+
+current terragrunt actions does not support `run-all` commands - created a fork [bonifaceltd/terragrunt-github-actions](https://github.com/bonifaceltd/terragrunt-github-actions) to fix this 
+
+## Networking
+
+BGP IPs `169.254.XX.0`
+ASN `645XX`
+
+| Env | Transport | Squad-A | Squad-B | Squad-C |
+|:---:|:---------:|:-------:|:-------:|:-------:|
+| DEV |     12    |    22   |    32   |    42   |
+| STG |     13    |    23   |    33   |    43   |
+| PRD |     14    |    24   |    34   |    44   |
+
+
+## terragrunt graph-dependencies
+
+![graphviz](./graphviz.png)
