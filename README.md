@@ -44,6 +44,14 @@
 
 #### Set up billing account
 
+standard Quota is 5 projects per billing account
+
+| Billing Account  | Billing Account ID   |
+|------------------|----------------------|
+|       Dev        | 01C4CA-74671D-650411 |
+|       Prd        | 01B482-A5BF15-428E53 |
+|       Stg        | 01473C-EEB311-01F68E |
+
 At this point terraform takes ownership
 ---
 
