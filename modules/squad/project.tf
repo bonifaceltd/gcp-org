@@ -7,7 +7,7 @@ resource "google_project" "env" {
 }
 
 resource "google_project_service" "api" {
-  for_each = toset(["compute", "serviceusage", "iam", "iamcredentials", "cloudresourcemanger", "dns", "cloudbilling", "storage-api", "logging", "stackdriver", "monitoring"])
+  for_each = toset(["compute", "serviceusage", "iam", "iamcredentials", "cloudresourcemanager", "dns", "cloudbilling", "storage-api", "logging", "stackdriver", "monitoring"])
   project = google_project.env.project_id
   service = "${each.value}.googleapis.com"
 }
