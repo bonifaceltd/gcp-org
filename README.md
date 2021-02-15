@@ -1,4 +1,4 @@
-# GCP-Boniface-ORG ![Plan Boniface GCP Org](https://github.com/mrkaleslie/gcp-boniface-org/workflows/Plan%20Boniface%20GCP%20Org/badge.svg) ![Apply Boniface GCP Org](https://github.com/mrkaleslie/gcp-boniface-org/workflows/Apply%20Boniface%20GCP%20Org/badge.svg)
+# GCP-Boniface-ORG ![Plan Boniface GCP Org](https://github.com/bonifaceltd/gcp-org/workflows/Plan%20Boniface%20GCP%20Org/badge.svg) ![Apply Boniface GCP Org](https://github.com/bonifaceltd/gcp-org/workflows/Apply%20Boniface%20GCP%20Org/badge.svg)
 
 
 ![org-diagram](./Org-Diagram.png)
