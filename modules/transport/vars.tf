@@ -1,3 +1,5 @@
+variable "asn" { type = string }
+variable "cidr_range" { type = string }
 variable "parent" { type = string }
 variable "org" { type = string }
 variable "name" { type = string }

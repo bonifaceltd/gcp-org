@@ -19,9 +19,10 @@ include {
 }
 
 inputs = {
-  parent          = dependency.transport_folder.outputs.id
-  org             = "bon"
-  name            = "transport-stg"
-  subnets         = []
-  shared_vpc_host = false
+  parent     = dependency.transport_folder.outputs.id
+  org        = "bon"
+  name       = "transport-stg"
+  subnets    = []
+  asn        = 12
+  cidr_range = "10.0.4.0/22"
 }
