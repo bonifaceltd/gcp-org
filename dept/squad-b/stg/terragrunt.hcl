@@ -19,6 +19,12 @@ dependency "transport" {
   config_path                             = "../../../transport/${local.env}"
   mock_outputs_allowed_terraform_commands = ["validate", "plan"]
   mock_outputs = {
+    vpn = {
+      project = ""
+      asn     = ""
+      gw      = ""
+      cr      = ""
+    }
   }
 }
 
@@ -31,8 +37,11 @@ include {
 }
 
 inputs = {
-  parent  = dependency.squad_folder.outputs.id
-  org     = "bon"
-  name    = "dept-${local.squad}-${local.env}"
-  subnets = []
+  parent     = dependency.squad_folder.outputs.id
+  org        = "bon"
+  name       = "dept-${local.squad}-${local.env}"
+  subnets    = []
+  asn        = 33
+  cidr_range = "10.0.6.0/24"
+  transport  = dependency.transport.outputs.vpn
 }
