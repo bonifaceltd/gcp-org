@@ -8,6 +8,8 @@ resource "google_project" "env" {
 
 resource "google_project_service" "api" {
   for_each = toset(["compute", "serviceusage", "iam", "iamcredentials", "cloudresourcemanager", "dns", "cloudbilling", "storage-api", "logging", "stackdriver", "monitoring"])
-  project = google_project.env.project_id
-  service = "${each.value}.googleapis.com"
+  project  = google_project.env.project_id
+  service  = "${each.value}.googleapis.com"
+
+  disable_on_destroy = false
 }
