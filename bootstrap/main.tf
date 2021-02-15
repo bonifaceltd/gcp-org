@@ -10,6 +10,12 @@ module "bootstrap" {
   group_billing_admins = "billing-admins@${var.org}"
   state_bucket_name    = "${local.org}-terraform-state"
 
+  org_admins_org_iam_permissions = [
+    "roles/billing.user",
+    "roles/resourcemanager.organizationAdmin",
+    "roles/compute.networkViewer"
+  ]
+
   sa_enable_impersonation = true
 }
 
