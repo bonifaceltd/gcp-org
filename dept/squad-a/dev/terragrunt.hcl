@@ -19,12 +19,7 @@ dependency "transport" {
   config_path                             = "../../../transport/${local.env}"
   mock_outputs_allowed_terraform_commands = ["validate", "plan"]
   mock_outputs = {
-    vpn = {
-      project = ""
-      asn     = "00"
-      gw      = ""
-      cr      = ""
-    }
+    vpn = { }
   }
 }
 
