@@ -41,13 +41,13 @@ resource "google_compute_vpn_tunnel" "squad" {
   vpn_gateway_interface = count.index
 }
 
-resource "google_compute_router_interface" "transport" {
+resource "google_compute_router_interface" "squad" {
   count      = 2
-  name       = "${var.name}-iface${count.index}"
-  project    = lookup(var.transport, "project", "")
-  router     = lookup(var.transport, "cr_name", "")
-  ip_range   = "${cidrhost(local.tunnel_ip_range[count.index], 1)}/30"
-  vpn_tunnel = google_compute_vpn_tunnel.transport[count.index].name
+  name       = "transport-${local.env}-iface${count.index}"
+  project    = google_project.env.project_id
+  router     = google_compute_router.this.name
+  ip_range   = "${cidrhost(local.tunnel_ip_range[count.index], 2)}/30"
+  vpn_tunnel = google_compute_vpn_tunnel.squad[count.index].name
 }
 
 resource "google_compute_router_peer" "squad_transport" {
@@ -58,16 +58,16 @@ resource "google_compute_router_peer" "squad_transport" {
   peer_ip_address           = cidrhost(local.tunnel_ip_range[count.index], 1)
   peer_asn                  = lookup(var.transport, "asn", "")
   advertised_route_priority = 100
-  interface                 = google_compute_router_interface.transport[count.index].name
+  interface                 = google_compute_router_interface.squad[count.index].name
 }
 
-resource "google_compute_router_interface" "squad" {
+resource "google_compute_router_interface" "transport" {
   count      = 2
-  name       = "transport-${local.env}-iface${count.index}"
-  project    = google_project.env.project_id
-  router     = google_compute_router.this.name
-  ip_range   = "${cidrhost(local.tunnel_ip_range[count.index], 2)}/30"
-  vpn_tunnel = google_compute_vpn_tunnel.squad[count.index].name
+  name       = "${var.name}-iface${count.index}"
+  project    = lookup(var.transport, "project", "")
+  router     = lookup(var.transport, "cr_name", "")
+  ip_range   = "${cidrhost(local.tunnel_ip_range[count.index], 1)}/30"
+  vpn_tunnel = google_compute_vpn_tunnel.transport[count.index].name
 }
 
 resource "google_compute_router_peer" "transport_squad" {
@@ -78,5 +78,5 @@ resource "google_compute_router_peer" "transport_squad" {
   peer_ip_address           = cidrhost(local.tunnel_ip_range[count.index], 2)
   peer_asn                  = "645${var.asn}"
   advertised_route_priority = 100
-  interface                 = google_compute_router_interface.squad[count.index].name
+  interface                 = google_compute_router_interface.transport[count.index].name
 }
