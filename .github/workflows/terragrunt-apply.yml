@@ -25,12 +25,13 @@ jobs:
         with:
           service_account_key: ${{ secrets.TF_GCP_SA_KEY }}
           export_default_credentials: true
-      - name: 'Terragrunt Apply'
+      - name: 'Terragrunt Apply(DISABLED)'
         uses: bonifaceltd/terragrunt-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
-          tf_actions_subcommand: 'apply'
+#           tf_actions_subcommand: 'apply'
+          tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
           tf_actions_run_all: true
