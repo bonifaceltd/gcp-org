@@ -9,7 +9,7 @@ provider "google" {
 EOF
 }
 
-# Configure Terragrunt to automatically store tfstate files in an S3 bucket
+# Configure Terragrunt to automatically store tfstate files in an GCS bucket
 remote_state {
   backend = "gcs"
   config = {
